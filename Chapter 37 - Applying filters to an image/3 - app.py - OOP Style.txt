@@ -1,0 +1,33 @@
+from PIL import Image, ImageFilter
+
+class ImageProcessor:
+    def __init__(self, image_path):
+        self.image_path = image_path
+        self.image = None
+        self.blurred_image = None
+
+    def open_image(self):
+        self.image = Image.open(self.image_path)
+
+    def apply_blur_filter(self):
+        if self.image is None:
+            self.open_image()
+        self.blurred_image = self.image.filter(ImageFilter.BLUR)
+
+    def save_image(self, output_path):
+        if self.blurred_image is None:
+            self.apply_blur_filter()
+        self.blurred_image.save(output_path)
+
+    def show_image(self):
+        if self.blurred_image is None:
+            self.apply_blur_filter()
+        self.blurred_image.show()
+
+# Example usage
+image_path = 'dog.jpg'
+output_path = 'blurred_image.jpg'
+
+processor = ImageProcessor(image_path)
+processor.save_image(output_path)
+processor.show_image()

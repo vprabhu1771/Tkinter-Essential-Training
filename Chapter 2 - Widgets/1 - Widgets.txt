@@ -1,0 +1,27 @@
+Tkinter provides a wide range of widgets that can be used to create GUI applications. Here are some of the most commonly used Tkinter widgets:
+
+    Label: A widget used to display text or an image on the screen.
+
+    Button: A widget that can be clicked to perform an action.
+
+    Entry: A widget that allows the user to input text.
+
+    Text: A widget used for multiline text input or display.
+
+    Checkbutton: A widget that allows the user to select multiple options.
+
+    Radiobutton: A widget that allows the user to select a single option from a group of options.
+
+    Listbox: A widget that displays a list of items that the user can select from.
+
+    Menu: A widget used to create a menu bar or dropdown menus.
+
+    Scrollbar: A widget used to scroll through content that is too large to fit on the screen.
+
+    Canvas: A widget used for drawing shapes and graphics.
+
+    Frame: A widget used to group other widgets together.
+
+    Toplevel: A widget used to create a new top-level window.
+
+These are just a few examples of the widgets available in Tkinter. There are many more widgets and options available for customization.

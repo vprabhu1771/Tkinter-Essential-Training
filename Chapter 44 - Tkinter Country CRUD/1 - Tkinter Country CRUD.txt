@@ -1,0 +1,124 @@
+import tkinter as tk
+from tkinter import messagebox
+import sqlite3
+
+# Create a database connection
+conn = sqlite3.connect('ifsc_code_finder.db')
+cursor = conn.cursor()
+
+# Create country table
+cursor.execute('''
+    CREATE TABLE IF NOT EXISTS country (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        name VARCHAR(255)
+    )
+''')
+conn.commit()
+
+
+def insert_country(name):
+    cursor.execute("INSERT INTO country (name) VALUES (?)", (name,))
+    conn.commit()
+
+
+def update_country(id, name):
+    cursor.execute("UPDATE country SET name = ? WHERE id = ?", (name, id))
+    conn.commit()
+
+
+def delete_country(id):
+    cursor.execute("DELETE FROM country WHERE id = ?", (id,))
+    conn.commit()
+
+
+def get_all_countries():
+    cursor.execute("SELECT * FROM country")
+    rows = cursor.fetchall()
+    return rows
+
+
+def get_country_by_id(id):
+    cursor.execute("SELECT * FROM country WHERE id = ?", (id,))
+    row = cursor.fetchone()
+    return row
+
+
+def create_country():
+    name = name_entry.get().strip()
+    if name:
+        insert_country(name)
+        messagebox.showinfo("Success", "Country created successfully")
+        load_countries()
+        name_entry.delete(0, tk.END)
+    else:
+        messagebox.showerror("Error", "Please enter a country name")
+
+
+def update_selected_country():
+    selected_item = countries_listbox.curselection()
+    if selected_item:
+        selected_country = countries_listbox.get(selected_item)
+        new_name = name_entry.get().strip()
+        if new_name:
+            country_id = selected_country.split(":")[0]
+            update_country(country_id, new_name)
+            messagebox.showinfo("Success", "Country updated successfully")
+            load_countries()
+            name_entry.delete(0, tk.END)
+        else:
+            messagebox.showerror("Error", "Please enter a country name")
+    else:
+        messagebox.showerror("Error", "No country selected")
+
+
+def delete_selected_country():
+    selected_item = countries_listbox.curselection()
+    if selected_item:
+        selected_country = countries_listbox.get(selected_item)
+        country_id = selected_country.split(":")[0]
+        delete_country(country_id)
+        messagebox.showinfo("Success", "Country deleted successfully")
+        load_countries()
+        name_entry.delete(0, tk.END)
+    else:
+        messagebox.showerror("Error", "No country selected")
+
+
+def load_countries():
+    countries = get_all_countries()
+    countries_listbox.delete(0, tk.END)
+    for country in countries:
+        countries_listbox.insert(tk.END, f"{country[0]}: {country[1]}")
+
+
+# Create the main window
+root = tk.Tk()
+root.title("Country Management")
+root.geometry("400x400")
+
+# Country Listbox
+countries_listbox = tk.Listbox(root)
+countries_listbox.pack()
+
+# Country Name Entry
+name_entry = tk.Entry(root)
+name_entry.pack()
+
+# Buttons
+create_button = tk.Button(root, text="Create", command=create_country)
+create_button.pack()
+
+update_button = tk.Button(root, text="Update", command=update_selected_country)
+update_button.pack()
+
+delete_button = tk.Button(root, text="Delete", command=delete_selected_country)
+delete_button.pack()
+
+# Load countries on startup
+load_countries()
+
+# Start the main loop
+root.mainloop()
+
+# Close the database connection
+conn.close()

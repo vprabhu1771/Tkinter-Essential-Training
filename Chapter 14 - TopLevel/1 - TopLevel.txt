@@ -1,0 +1,30 @@
+The Toplevel widget in Tkinter is used to create a new top-level window. It is similar to the Tk widget, which creates the main application window, but Toplevel allows you to create additional windows as needed.
+
+You can create a new Toplevel window by calling its constructor and passing in the parent widget as an argument. Here is an example:
+
+import tkinter as tk
+
+root = tk.Tk()
+
+# Adjust size
+root.geometry("400x100")
+
+def open_window():
+    top = tk.Toplevel(root)
+
+    # Adjust size
+    top.geometry("400x100")
+
+    top.title("New Window")
+    label = tk.Label(top, text="This is a new window!")
+    label.pack()
+
+button = tk.Button(root, text="Open Window", command=open_window)
+button.pack()
+
+root.mainloop()
+
+
+In this example, we create a Toplevel window when the button is clicked. We set the parent widget to be the main application window (root) and give the new window a title. We then add a Label widget to the new window to display some text.
+
+You can also set other properties of the Toplevel widget, such as its size, position, and background color, using the same methods as with other widgets. Additionally, you can use the withdraw and deiconify methods to hide and show the window, respectively.

@@ -1,0 +1,7 @@
+To create a Tkinter input field that automatically converts lowercase text to uppercase in real-time, you can use the StringVar variable to track the input's value and the trace method to detect changes.
+
+In this example, the on_text_changed function is called whenever the input field's value changes. It retrieves the current value from the StringVar, converts it to uppercase, and updates the StringVar with the modified text. The trace method is used to attach this function to the StringVar so that it's triggered on changes.
+
+In this updated code, we have added a label widget (label) that will display the converted uppercase text. The on_text_changed function is modified to also update the label's text with the modified uppercase text. We use the config method to update the text attribute of the label widget.
+
+Now, whenever the input text changes, both the input field and the label will reflect the converted uppercase text in real-time.

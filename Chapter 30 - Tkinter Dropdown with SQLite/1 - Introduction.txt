@@ -1,0 +1,25 @@
+To create a tkinter dropdown using SQLite DB, you can follow the following steps:
+
+    Import the necessary modules, including tkinter and sqlite3.
+
+    Create a tkinter window and define the size and title.
+
+    Connect to the SQLite database and create a cursor object to execute SQL queries.
+
+    Retrieve the data from the SQLite database using a SELECT query.
+
+    Create a tkinter variable and set it as the default value for the dropdown.
+
+    Create a tkinter dropdown widget and configure it to display the retrieved data.
+
+    Pack the dropdown widget and any other necessary widgets onto the tkinter window.
+
+    Close the cursor and database connection.
+
+It connects to an SQLite database and retrieves data from a table called "category" using the cursor.execute() and cursor.fetchall() methods. It then creates a tkinter window and displays the retrieved data in a dropdown widget using tk.OptionMenu().
+
+A tkinter variable called default is also created and set as the default value for the dropdown widget. A label widget is created to display the selected value from the dropdown, and a function called update_label() is defined to update the label when the dropdown selection changes.
+
+Finally, the update_label() function is called whenever the dropdown selection changes using default.trace("w", update_label). The cursor and database connection are also closed before the tkinter event loop is run using cursor.close(), conn.close(), and root.mainloop().
+
+You can test this code by replacing "example.db" with the name of your own SQLite database file and "category" with the name of your own table. When you run the code, a tkinter window will open with a dropdown widget containing the data from the specified table. When you select an option from the dropdown, the selected value will be displayed in a label below the dropdown.

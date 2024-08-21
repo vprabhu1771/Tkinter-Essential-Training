@@ -1,0 +1,32 @@
+from PIL import Image, ImageDraw, ImageFont
+
+# Open an image
+image = Image.open('dog.jpg')
+
+# Create a drawing object
+draw = ImageDraw.Draw(image)
+
+# Define watermark text parameters
+watermark_text = 'Watermark'
+
+font_path = 'C:/Windows/Fonts/arial.ttf'
+
+font = ImageFont.truetype(font_path, size=24)
+
+# Black
+color = (0, 0, 0)
+
+# Set the opacity (0-255)
+opacity = 128
+
+x = 10
+
+y = 10
+
+# Add the watermark text to the image
+draw.text((x, y), watermark_text, font=font, fill=color, opacity=opacity)
+
+# Save the image with the watermark
+image.save('image_with_watermark.jpg')
+
+image.show()

@@ -1,0 +1,30 @@
+import serial
+from tkinter import *
+import tkinter as tk
+
+class BlinkGUI:
+    def __init__(self, comm_port):
+        self.ser = serial.Serial(comm_port, baudrate=9600, timeout=1)
+        self.create_gui()
+
+    def create_gui(self):
+        self.root = Tk()
+        self.root.title('Blink GUI')
+
+        btn_on = tk.Button(self.root, text="Turn On", command=self.turn_on_led)
+        btn_on.grid(row=0, column=0)
+
+        btn_off = tk.Button(self.root, text="Turn Off", command=self.turn_off_led)
+        btn_off.grid(row=0, column=1)
+
+        self.root.geometry("350x350")
+        self.root.mainloop()
+
+    def turn_on_led(self):
+        self.ser.write(b'o')
+
+    def turn_off_led(self):
+        self.ser.write(b'x')
+
+# Create an instance of the BlinkGUI class with the COM port
+blink_app = BlinkGUI('COM7')

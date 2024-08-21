@@ -1,0 +1,60 @@
+The provided code demonstrates how to add a watermark text to an image using the Python Imaging Library (PIL) module. Here's an explanation of the code:
+
+1. Import the `Image`, `ImageDraw`, and `ImageFont` classes from the `PIL` package:
+
+from PIL import Image, ImageDraw, ImageFont
+
+
+2. Open an image by providing the path to the image file:
+
+image = Image.open('dog.jpg')
+
+Replace `'dog.jpg'` with the actual path to your image file.
+
+3. Create a drawing object using the `ImageDraw.Draw()` function, passing the `image` object as an argument:
+
+draw = ImageDraw.Draw(image)
+
+The `draw` object allows you to draw on the image.
+
+4. Define the watermark text and text parameters:
+
+watermark_text = 'Watermark'
+font_path = 'C:/Windows/Fonts/arial.ttf'
+font = ImageFont.truetype(font_path, size=24)
+color = (0, 0, 0)  # Black
+
+Here, `watermark_text` represents the text to be used as a watermark. `font_path` is the path to the TrueType font file (e.g., Arial) to be used for the text. `font` is created using `ImageFont.truetype()` by specifying the font path and the font size. `color` is a tuple representing the RGB color value for the text.
+
+5. Set the opacity of the watermark text:
+
+opacity = 128
+
+Here, `opacity` represents the transparency level of the watermark text. The value ranges from 0 (completely transparent) to 255 (completely opaque).
+
+6. Specify the coordinates where the watermark text will be placed on the image:
+
+x = 10
+y = 10
+
+Here, `x` and `y` represent the top-left corner coordinates of the watermark text bounding box.
+
+7. Add the watermark text to the image using the `text()` method of the `draw` object:
+
+draw.text((x, y), watermark_text, font=font, fill=color, opacity=opacity)
+
+The `text()` method takes the position coordinates, the text string, the font object, the fill color, and the opacity as arguments. It adds the specified text as a watermark to the image at the provided coordinates.
+
+8. Save the modified image with the added watermark:
+
+image.save('image_with_watermark.jpg')
+
+The image with the added watermark text will be saved to the specified output file path.
+
+9. Display the modified image using the `show()` method:
+
+image.show()
+
+This command will open a window displaying the image with the added watermark text.
+
+After executing the code, the original image will be loaded, the text "Watermark" will be added as a watermark to it at the specified coordinates using the provided font, color, and opacity. The modified image with the watermark will be saved as "image_with_watermark.jpg". Additionally, the modified image will be displayed in a separate window using the `show()` method if supported in your environment.

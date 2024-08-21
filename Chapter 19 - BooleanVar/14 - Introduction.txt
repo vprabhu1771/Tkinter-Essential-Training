@@ -1,0 +1,7 @@
+This example is similar to the previous one, but we add a Label widget named label to the root window. This label will display the selected courses.
+
+We define an update_label function that updates the text of the label widget to display the selected courses whenever a checkbutton is clicked.
+
+We associate the update_label function with each checkbutton using the command option, so that the label is updated whenever a checkbutton is clicked.
+
+When the user clicks a checkbutton to select a course, the label is updated to display the selected courses. If no courses are selected, the label displays a message saying so.

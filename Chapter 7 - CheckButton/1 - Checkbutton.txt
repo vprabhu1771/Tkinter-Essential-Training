@@ -1,0 +1,79 @@
+Here is another example of using Checkbutton widget to implement a multi-choice quiz:
+
+
+import tkinter as tk
+
+root = tk.Tk()
+
+# Adjust Size
+root.geometry("900x300")
+
+root.title("Multi-Choice Quiz")
+
+# Define the questions and their answers
+questions = [
+    {
+        "text": "What is the capital of France?",
+        "choices": ["Paris", "London", "Berlin", "Madrid"],
+        "answer": "Paris"
+    },
+    {
+        "text": "What is the largest planet in our solar system?",
+        "choices": ["Jupiter", "Saturn", "Neptune", "Uranus"],
+        "answer": "Jupiter"
+    },
+    {
+        "text": "Who wrote the novel 'To Kill a Mockingbird'?",
+        "choices": ["Harper Lee", "J.K. Rowling", "Stephen King", "Jane Austen"],
+        "answer": "Harper Lee"
+    }
+]
+
+# Create a list of variables to hold the state of each answer
+answer_vars = [tk.StringVar() for i in range(len(questions))]
+
+# Function to handle submit button click
+def submit():
+    # Calculate the score by comparing the selected answers to the correct answers
+    score = 0
+    for i, question in enumerate(questions):
+        if answer_vars[i].get() == question["answer"]:
+            score += 1
+
+    # Display the score
+    score_label.config(text=f"Score: {score}/{len(questions)}")
+
+# Create a frame to hold the questions and answers
+question_frame = tk.Frame(root)
+question_frame.pack(pady=10)
+
+# Add each question and its answers to the frame
+for i, question in enumerate(questions):
+    # Create a label for the question text
+    question_label = tk.Label(question_frame, text=question["text"])
+    question_label.grid(row=i, column=0, padx=10, pady=5, sticky="w")
+
+    # Create a Checkbutton for each answer choice
+    for j, choice in enumerate(question["choices"]):
+        answer_var = answer_vars[i]
+        answer_button = tk.Checkbutton(question_frame, text=choice, variable=answer_var, onvalue=choice, offvalue="")
+        answer_button.grid(row=i, column=j+1, padx=5, pady=5)
+
+# Create a submit button
+submit_button = tk.Button(root, text="Submit", command=submit)
+submit_button.pack(pady=10)
+
+# Create a label to display the score
+score_label = tk.Label(root, text="")
+score_label.pack()
+
+root.mainloop()
+
+
+In this example, we create a multi-choice quiz with a Label widget for each question, a set of Checkbutton widgets for each answer choice, and a Button widget to submit the answers. We use a list of dictionaries to store the questions and their answers, with each dictionary containing the question text, a list of answer choices, and the correct answer.
+
+When the user clicks the submit button, the submit function is called. This function calculates the score by comparing the selected answers to the correct answers for each question. It then updates a Label widget to display the score.
+
+The questions and answer choices are added to a Frame widget using a nested loop. For each question, we create a Label widget for the question text and a set of Checkbutton widgets for each answer choice. We use a list of StringVar objects to hold the state of each answer.
+
+Note that this example does not provide feedback to the user on which answers were correct or incorrect. If you want to provide feedback, you will need to modify the submit

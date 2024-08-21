@@ -1,0 +1,33 @@
+from PIL import Image
+
+
+class ImageCropper:
+    def __init__(self, image_path):
+        self.image = Image.open(image_path)
+
+    def crop_image(self, left, upper, right, lower):
+        box = (left, upper, right, lower)
+        cropped_image = self.image.crop(box)
+        return cropped_image
+
+    def save_cropped_image(self, cropped_image, save_path):
+        cropped_image.save(save_path)
+
+    def show_cropped_image(self, cropped_image):
+        cropped_image.show()
+
+
+# Create an instance of ImageCropper
+cropper = ImageCropper('dog.jpg')
+
+# Define the cropping region (left, upper, right, lower)
+box = (100, 100, 800, 400)
+
+# Crop the image
+cropped_image = cropper.crop_image(*box)
+
+# Save the cropped image
+cropper.save_cropped_image(cropped_image, 'cropped_image.jpg')
+
+# Show the cropped image
+cropper.show_cropped_image(cropped_image)

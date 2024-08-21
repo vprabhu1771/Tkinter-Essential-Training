@@ -1,0 +1,31 @@
+here's a full example of how to create and use a Scrollbar widget in Tkinter:
+
+import tkinter as tk
+
+root = tk.Tk()
+
+# Adjust Size
+root.geometry("300x200")
+
+# create a Text widget and add some text
+text = tk.Text(root)
+text.insert(tk.END, "This is some long text that requires scrolling.\n" * 10)
+
+# create a Scrollbar widget and link it to the Text widget
+scrollbar = tk.Scrollbar(root)
+scrollbar.pack(side=tk.RIGHT, fill=tk.Y)
+text.config(yscrollcommand=scrollbar.set)
+scrollbar.config(command=text.yview)
+
+# add the Text widget to the window
+text.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
+
+root.mainloop()
+
+
+
+In this example, we create a Text widget and add some long text to it using the insert() method. We then create a Scrollbar widget and pack it on the right side of the window using the pack() method. We link the Scrollbar to the Text widget using the yscrollcommand and config() methods, and set the command for the Scrollbar using the command method.
+
+Finally, we pack the Text widget on the left side of the window, and set its side, fill, and expand options to fill the available space and allow scrolling as needed.
+
+You can customize this example by replacing the Text widget with another widget that requires scrolling, or by changing the orientation or appearance of the Scrollbar.

@@ -1,0 +1,12 @@
+from PIL import Image, ImageFilter
+
+# Open an image
+image = Image.open('dog.jpg')
+
+# Apply a blur filter
+blurred_image = image.filter(ImageFilter.BLUR)
+
+# Save the blurred image
+blurred_image.save('blurred_image.jpg')
+
+blurred_image.show()

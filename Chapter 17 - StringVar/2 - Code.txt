@@ -1,0 +1,26 @@
+import tkinter as tk
+
+def update_label():
+    label_text.set(entry.get())
+
+root = tk.Tk()
+
+root.geometry('400x400')
+
+# Create a StringVar to hold the label text
+label_text = tk.StringVar()
+label_text.set("Hello, World!")
+
+# Create a label and associate it with the StringVar
+label = tk.Label(root, textvariable=label_text)
+label.pack()
+
+# Create an entry widget to allow the user to update the label text
+entry = tk.Entry(root)
+entry.pack()
+
+# Create a button to update the label text when clicked
+button = tk.Button(root, text="Update Label", command=update_label)
+button.pack()
+
+root.mainloop()

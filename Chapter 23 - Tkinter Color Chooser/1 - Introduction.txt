@@ -1,0 +1,1 @@
+colorchooser: This dialog box is used to select a color. It provides a color wheel and allows the user to select the desired color.

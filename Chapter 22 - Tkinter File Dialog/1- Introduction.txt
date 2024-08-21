@@ -1,0 +1,16 @@
+In tkinter, the filedialog module provides several functions that allow the user to open or save files through a file dialog box. This module is useful when you want the user to select a file or specify a file path without having to type it manually.
+
+Here are some of the commonly used functions in the filedialog module:
+
+    filedialog.askopenfilename: This function displays a file dialog box and allows the user to select a file to open. It returns the full path of the selected file.
+
+    filedialog.askopenfilenames: This function is similar to askopenfilename but allows the user to select multiple files. It returns a tuple of file paths.
+
+    filedialog.asksaveasfilename: This function displays a file dialog box and allows the user to specify a file path to save a file. It returns the full path of the selected file.
+
+    filedialog.askdirectory: This function displays a directory dialog box and allows the user to select a directory. It returns the full path of the selected directory.
+
+Here is an example of using the filedialog module to open a file:
+
+
+we first create a Tk object and then call the withdraw method to hide the main window. We then call the askopenfilename function to display the file dialog box and allow the user to select a file to open. Finally, we use the selected filename to open the file and read its contents.

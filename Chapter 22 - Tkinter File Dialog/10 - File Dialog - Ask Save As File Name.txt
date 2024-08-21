@@ -1,0 +1,38 @@
+from tkinter import *
+from tkinter.filedialog import asksaveasfilename
+
+def save_file():
+    # Create a Tk object and hide the main window
+    root = Tk()
+    root.withdraw()
+
+    # Define the file types and default file name
+    file_types = [("Text Files", "*.txt"), ("All Files", "*.*")]
+    default_file_name = "example_file"
+
+    # Display the file dialog box and get the file path to save
+    file_path = asksaveasfilename(filetypes=file_types, defaultextension=".txt", initialfile=default_file_name)
+
+    # Save the file with some sample content
+    with open(file_path, 'w') as file:
+        file.write('Hello, world!')
+
+# Create a button that saves a file with multiple file types
+root = Tk()
+
+# Adjust Size
+root.geometry("300x100")
+
+button = Button(root, text="Save File with Multiple File Types", command=save_file)
+button.pack()
+
+root.mainloop()
+
+
+
+Here's an example of using filedialog.asksaveasfilename to save a file with multiple file types:
+
+
+we define a function save_file that saves a file with multiple file types using filedialog.asksaveasfilename. When the function is called, it creates a Tk object and hides the main window using the withdraw method. It then defines the file types and default file name. Next, it calls asksaveasfilename to display the file dialog box with the specified file types and default extension, and get the file path to save. Finally, it saves the file with some sample content.
+
+We create a button in the main window that calls the save_file function when clicked. When the button is clicked, it opens the file dialog box with the specified file types and allows the user to specify a file path to save. Once a file path is selected, the save_file function is called and the file is saved with some sample content and the selected file type.

@@ -1,0 +1,23 @@
+This code is an example of a simple GUI application using Tkinter to control an LED connected to an Arduino or a similar microcontroller via serial communication. Here's how it works:
+
+1. The code starts by importing the necessary modules, `serial` for serial communication and `tkinter` for creating the GUI.
+
+2. The `commPort` variable is set to the appropriate COM port to establish a serial connection with the microcontroller. You may need to change this value depending on your setup.
+
+3. The `turnOnLED` function sends the character 'o' to the microcontroller via serial communication to turn on the LED.
+
+4. The `turnOffLED` function sends the character 'x' to the microcontroller via serial communication to turn off the LED.
+
+5. An instance of the Tkinter window is created using `Tk()`.
+
+6. Two buttons are created using the `Button` class from Tkinter. The `text` parameter specifies the text displayed on the buttons, and the `command` parameter specifies the function to be called when the button is clicked. The `turnOnLED` function is assigned to the "Turn On" button, and the `turnOffLED` function is assigned to the "Turn Off" button.
+
+7. The buttons are arranged using the `grid` geometry manager, placing the "Turn On" button in the first row and first column, and the "Turn Off" button in the first row and second column.
+
+8. The size of the Tkinter window is set using the `geometry` method.
+
+9. Finally, the `mainloop` method is called to start the Tkinter event loop, which continuously listens for user interactions and updates the GUI accordingly.
+
+When the "Turn On" button is clicked, the `turnOnLED` function is called, which sends the character 'o' to the microcontroller. Similarly, clicking the "Turn Off" button triggers the `turnOffLED` function, which sends the character 'x'. This way, the GUI can control the LED connected to the microcontroller via serial communication.
+
+Please note that this code assumes you have the necessary hardware setup with an Arduino or a similar microcontroller and an LED connected to it. Additionally, you may need to modify the `commPort` variable to match your specific COM port.

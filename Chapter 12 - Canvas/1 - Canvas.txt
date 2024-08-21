@@ -1,0 +1,30 @@
+here's a full example of how to create and use a Canvas widget in Tkinter:
+
+import tkinter as tk
+
+root = tk.Tk()
+
+# Adjust Size
+root.geometry("300x200")
+
+# create a Canvas widget
+canvas = tk.Canvas(root, bg="white")
+canvas.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
+
+# create a rectangle shape on the canvas
+rectangle = canvas.create_rectangle(50, 50, 150, 150, fill="blue")
+
+# create a line shape on the canvas
+line = canvas.create_line(0, 0, 200, 100, fill="red")
+
+# create a text shape on the canvas
+text = canvas.create_text(100, 20, text="Hello, World!", fill="green")
+
+root.mainloop()
+
+
+In this example, we create a Canvas widget using the Canvas() method, and pack it on the left side of the window using the pack() method. We then create three different shapes on the canvas using the create_rectangle(), create_line(), and create_text() methods.
+
+The create_rectangle() method creates a rectangle shape on the canvas, with the specified coordinates and fill color. The create_line() method creates a line shape on the canvas, with the specified starting and ending points and line color. The create_text() method creates a text shape on the canvas, with the specified coordinates, text content, and text color.
+
+You can customize this example by adding other shapes or objects to the canvas, changing the size or color of the canvas or shapes, or animating the shapes on the canvas using the move() method.

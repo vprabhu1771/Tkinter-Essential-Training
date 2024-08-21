@@ -1,0 +1,8 @@
+In this example, we create two IntVar objects named gender_var. The value of gender_var is set to 1, which means that the "Male" radiobutton is initially selected. We then create two radiobuttons and associate them with the gender_var variable using the variable option and the value option. This means that when the user selects a radiobutton, the value of gender_var will be updated to reflect the selected gender.
+
+We also create a button widget and define a display_gender function that displays the selected gender in the console. The display_gender function checks the value of gender_var and prints the appropriate message.
+
+Finally, we associate the display_gender function with the button using the command option. When the user clicks the button, the display_gender function is called, which displays the selected gender in the console.
+
+Overall, this example demonstrates how you can use IntVar objects to represent gender options with radiobuttons in Tkinter, and how you can associate a function with a button to respond to user input.
+

@@ -1,0 +1,15 @@
+from PIL import Image
+
+# Open an image
+image = Image.open('dog.jpg')
+
+# Define the cropping region (left, upper, right, lower)
+box = (100, 100, 800, 400)
+
+# Crop the image
+cropped_image = image.crop(box)
+
+# Save the cropped image
+cropped_image.save('cropped_image.jpg')
+
+cropped_image.show()

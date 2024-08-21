@@ -1,0 +1,26 @@
+from PIL import Image, ImageDraw, ImageFont
+
+# Open an image
+image = Image.open('dog.jpg')
+
+# Create a drawing object
+draw = ImageDraw.Draw(image)
+
+# Define text parameters
+text = 'Hello, World!'
+
+font_path = 'C:/Windows/Fonts/arial.ttf'
+
+font = ImageFont.truetype(font_path, size=24)
+# Black
+color = (0, 0, 0)
+
+x = 10
+y = 10
+# Add text to the image
+draw.text((x, y), text, font=font, fill=color)
+
+# Save the image with the text
+image.save('image_with_text.jpg')
+
+image.show()

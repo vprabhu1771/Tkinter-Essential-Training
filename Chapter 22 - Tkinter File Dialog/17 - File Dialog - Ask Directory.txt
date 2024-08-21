@@ -1,0 +1,34 @@
+from tkinter import *
+from tkinter.filedialog import askdirectory
+
+def select_directory():
+    # Create a Tk object and hide the main window
+    root = Tk()
+    root.withdraw()
+
+    # Display the directory dialog box and get the selected directory path
+    dir_path = askdirectory()
+
+    # Print the selected directory path
+    print("Selected Directory: ", dir_path)
+
+# Create a button that opens the directory dialog box
+root = Tk()
+
+# Adjust Size
+root.geometry("300x100")
+
+button = Button(root, text="Select Directory", command=select_directory)
+
+button.pack()
+
+root.mainloop()
+
+
+
+here's an example of using filedialog.askdirectory to get a directory path from the user:
+
+
+In this example, we define a function select_directory that opens the directory dialog box using filedialog.askdirectory. When the function is called, it creates a Tk object and hides the main window using the withdraw method. It then calls askdirectory to display the directory dialog box and get the selected directory path. Finally, it prints the selected directory path to the console.
+
+We create a button in the main window that calls the select_directory function when clicked. When the button is clicked, it opens the directory dialog box and allows the user to select a directory. Once a directory is selected, the select_directory function is called and the selected directory path is printed to the console.

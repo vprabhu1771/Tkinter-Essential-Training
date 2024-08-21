@@ -1,0 +1,3 @@
+Here is an example of using the messagebox module to display a message to the user:
+
+You can use the other dialog boxes in a similar way by importing the corresponding modules and calling the appropriate functions.

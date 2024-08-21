@@ -1,0 +1,9 @@
+The Python Pillow library (also known as PIL or Pillow) is a powerful image processing library that allows you to manipulate and enhance images using Python. It provides a wide range of image processing capabilities, including image loading and saving, resizing, cropping, rotating, applying filters, adding text and shapes, and much more.
+
+To get started with Pillow, you need to install it. You can install it using pip by running the following command:
+
+pip install pillow
+
+Once Pillow is installed, you can import it into your Python script using the following import statement:
+
+from PIL import Image

@@ -1,0 +1,31 @@
+import tkinter as tk
+
+
+class TextConverterApp:
+    def __init__(self):
+        self.root = tk.Tk()
+        self.root.geometry("300x100")
+        self.root.title("Lowercase to Uppercase")
+
+        self.var = tk.StringVar()
+        self.var.trace('w', self.on_text_changed)
+
+        self.entry = tk.Entry(self.root, textvariable=self.var)
+        self.entry.pack()
+
+        self.label = tk.Label(self.root, text="")
+        self.label.pack()
+
+    def on_text_changed(self, *args):
+        text = self.var.get()
+        text = text.upper()
+        self.var.set(text)
+        self.label.config(text=text)
+
+    def run(self):
+        self.root.mainloop()
+
+
+# Create an instance of the TextConverterApp and run it
+app = TextConverterApp()
+app.run()

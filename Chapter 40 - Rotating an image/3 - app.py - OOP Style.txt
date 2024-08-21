@@ -1,0 +1,28 @@
+from PIL import Image
+
+class ImageProcessor:
+    def __init__(self, image_path):
+        self.image = Image.open(image_path)
+
+    def rotate(self, angle):
+        rotated_image = self.image.rotate(angle)
+        return rotated_image
+
+    def save(self, image, save_path):
+        image.save(save_path)
+
+    def show(self, image):
+        image.show()
+
+
+# Create an instance of the ImageProcessor class
+processor = ImageProcessor('dog.jpg')
+
+# Rotate the image by a specific angle (in degrees)
+rotated_image = processor.rotate(90)
+
+# Save the rotated image
+processor.save(rotated_image, 'rotated_image.jpg')
+
+# Show the rotated image
+processor.show(rotated_image)

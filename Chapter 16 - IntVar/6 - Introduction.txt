@@ -1,0 +1,3 @@
+In this updated example, we create a label widget to display the selected gender. The label initially displays "Selected Gender: Male". We then define an update_label function that checks the value of gender_var and updates the text of the label accordingly. We associate this function with the button using the command option, so that when the user clicks the button, the label is updated with the selected gender.
+
+Overall, this example demonstrates how you can use IntVar objects to represent gender options with radiobuttons in Tkinter, and how you can update a label to display the selected gender.

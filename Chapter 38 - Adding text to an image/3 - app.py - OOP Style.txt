@@ -1,0 +1,35 @@
+from PIL import Image, ImageDraw, ImageFont
+
+class ImageEditor:
+    def __init__(self, image_path):
+        self.image = Image.open(image_path)
+        self.draw = ImageDraw.Draw(self.image)
+
+    def add_text(self, text, font_path, font_size, color, x, y):
+        font = ImageFont.truetype(font_path, size=font_size)
+        self.draw.text((x, y), text, font=font, fill=color)
+
+    def save_image(self, save_path):
+        self.image.save(save_path)
+
+    def display_image(self):
+        self.image.show()
+
+
+# Create an instance of ImageEditor
+editor = ImageEditor('dog.jpg')
+
+# Define text parameters
+text = 'Hello, World!'
+font_path = 'C:/Windows/Fonts/arial.ttf'
+font_size = 24
+color = (0, 0, 0)  # Black
+x = 10
+y = 10
+
+# Add text to the image
+editor.add_text(text, font_path, font_size, color, x, y)
+
+# Save and display the image
+editor.save_image('image_with_text.jpg')
+editor.display_image()

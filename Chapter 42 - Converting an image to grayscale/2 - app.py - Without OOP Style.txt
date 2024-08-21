@@ -1,0 +1,12 @@
+from PIL import Image
+
+# Open an image
+image = Image.open('dog.jpg')
+
+# Convert the image to grayscale
+grayscale_image = image.convert('L')
+
+# Save the grayscale image
+grayscale_image.save('grayscale_image.jpg')
+
+grayscale_image.show()

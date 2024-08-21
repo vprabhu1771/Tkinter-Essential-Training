@@ -1,0 +1,11 @@
+In Python, tkinter is a standard GUI (Graphical User Interface) toolkit. It provides a set of tools to create desktop applications with a graphical interface. One of the essential features of a desktop application is the ability to display dialogs to the user. These dialogs serve various purposes such as displaying messages, asking for input, or providing a confirmation message.
+
+tkinter provides several built-in dialog boxes that you can use to prompt the user for input or display a message. Some of the common dialog boxes available in tkinter are:
+
+    messagebox: This dialog box is used to display messages to the user. It can display simple messages or messages with an icon and buttons. The messagebox module provides several functions, such as showinfo, showwarning, showerror, askquestion, askokcancel, and askyesno.
+
+    filedialog: This dialog box is used to open or save files. It provides the user with an interface to navigate the file system and select the file they want to open or save.
+
+    colorchooser: This dialog box is used to select a color. It provides a color wheel and allows the user to select the desired color.
+
+    font: This dialog box is used to select a font. It provides an interface to choose the font style, size, and color.

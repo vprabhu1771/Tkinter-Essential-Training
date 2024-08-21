@@ -1,0 +1,54 @@
+The provided code demonstrates how to add text to an image using the Python Imaging Library (PIL) module. Here's a breakdown of the code:
+
+1. Import the `Image`, `ImageDraw`, and `ImageFont` classes from the `PIL` package:
+
+from PIL import Image, ImageDraw, ImageFont
+
+
+2. Open an image by providing the path to the image file:
+
+image = Image.open('dog.jpg')
+
+Replace `'dog.jpg'` with the actual path to your image file.
+
+3. Create a drawing object using the `ImageDraw.Draw()` function, passing the `image` object as an argument:
+
+draw = ImageDraw.Draw(image)
+
+The `draw` object allows you to draw on the image.
+
+4. Define the text and text parameters:
+
+text = 'Hello, World!'
+font_path = 'C:/Windows/Fonts/arial.ttf'
+font = ImageFont.truetype(font_path, size=24)
+color = (0, 0, 0)  # Black
+
+Here, `text` represents the text to be added to the image. `font_path` is the path to the TrueType font file (e.g., Arial) to be used for the text. `font` is created using `ImageFont.truetype()` by specifying the font path and the font size. `color` is a tuple representing the RGB color value for the text.
+
+5. Specify the coordinates where the text will be placed on the image:
+
+x = 10
+y = 10
+
+Here, `x` and `y` represent the top-left corner coordinates of the text bounding box.
+
+6. Add the text to the image using the `text()` method of the `draw` object:
+
+draw.text((x, y), text, font=font, fill=color)
+
+The `text()` method takes the position coordinates, the text string, the font object, and the fill color as arguments. It adds the specified text to the image at the provided coordinates.
+
+7. Save the modified image with the added text:
+
+image.save('image_with_text.jpg')
+
+The image with the added text will be saved to the specified output file path.
+
+8. Display the modified image using the `show()` method:
+
+image.show()
+
+This command will open a window displaying the image with the added text.
+
+After executing the code, the original image will be loaded, the text "Hello, World!" will be added to it at the specified coordinates using the provided font and color, and the modified image will be saved as "image_with_text.jpg". Additionally, the modified image will be displayed in a separate window using the `show()` method if supported in your environment.

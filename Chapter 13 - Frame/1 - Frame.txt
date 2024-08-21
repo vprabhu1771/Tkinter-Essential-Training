@@ -1,0 +1,31 @@
+here's a full example of how to create and use a Frame widget in Tkinter:
+
+import tkinter as tk
+
+root = tk.Tk()
+
+# Adjust Size
+root.geometry("300x200")
+
+# create a Frame widget
+frame = tk.Frame(root, bg="white")
+frame.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
+
+# add some widgets to the Frame
+label = tk.Label(frame, text="This is a label", bg="white")
+button = tk.Button(frame, text="Click me!", bg="blue", fg="white")
+entry = tk.Entry(frame)
+
+# pack the widgets inside the Frame
+label.pack(pady=10)
+button.pack(pady=10)
+entry.pack(pady=10)
+
+root.mainloop()
+
+
+In this example, we create a Frame widget using the Frame() method, and pack it on the left side of the window using the pack() method. We then create three different widgets - a Label, a Button, and an Entry - using their respective methods, and pass the Frame widget as the parent argument.
+
+We pack the widgets inside the Frame widget using the pack() method, and add some padding between them using the pady option.
+
+You can customize this example by adding or removing widgets from the Frame, changing their properties or appearance, or using different layout managers to arrange the widgets inside the Frame.

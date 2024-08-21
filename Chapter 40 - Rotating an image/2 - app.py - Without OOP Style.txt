@@ -1,0 +1,12 @@
+from PIL import Image
+
+# Open an image
+image = Image.open('dog.jpg')
+
+# Rotate the image by a specific angle (in degrees)
+rotated_image = image.rotate(90)
+
+# Save the rotated image
+rotated_image.save('rotated_image.jpg')
+
+rotated_image.show()

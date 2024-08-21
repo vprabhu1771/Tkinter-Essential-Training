@@ -1,0 +1,33 @@
+from tkinter import *
+from tkinter.colorchooser import askcolor
+
+def select_color():
+    # Create a Tk object and hide the main window
+    root = Tk()
+    root.withdraw()
+
+    # Display the color dialog box and get the selected color
+    color = askcolor()
+
+    # Print the selected color
+    print("Selected Color: ", color[1])
+
+# Create a button that opens the color dialog box
+root = Tk()
+
+# Adjust Size
+root.geometry("300x100")
+
+button = Button(root, text="Select Color", command=select_color)
+
+button.pack()
+
+root.mainloop()
+
+
+ here's an example of using colorchooser.askcolor to get a color from the user:
+
+
+In this example, we define a function select_color that opens the color dialog box using colorchooser.askcolor. When the function is called, it creates a Tk object and hides the main window using the withdraw method. It then calls askcolor to display the color dialog box and get the selected color. Finally, it prints the selected color to the console.
+
+We create a button in the main window that calls the select_color function when clicked. When the button is clicked, it opens the color dialog box and allows the user to select a color. Once a color is selected, the select_color function is called and the selected color is printed to the console.

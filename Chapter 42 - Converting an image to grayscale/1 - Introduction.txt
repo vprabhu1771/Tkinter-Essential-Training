@@ -1,0 +1,32 @@
+The provided code demonstrates how to convert an image to grayscale using the Python Imaging Library (PIL) module. Here's an explanation of the code:
+
+1. Import the `Image` class from the `PIL` package:
+
+from PIL import Image
+
+
+2. Open an image by providing the path to the image file:
+
+image = Image.open('dog.jpg')
+
+Replace `'dog.jpg'` with the actual path to your image file.
+
+3. Convert the image to grayscale using the `convert()` method of the `image` object, specifying `'L'` as the mode:
+
+grayscale_image = image.convert('L')
+
+The `convert()` method allows you to convert the image from one mode to another. In this case, `'L'` represents the grayscale mode.
+
+4. Save the grayscale image to a file by calling the `save()` method on the `grayscale_image` object, providing the desired output file path:
+
+grayscale_image.save('grayscale_image.jpg')
+
+The grayscale image will be saved to the specified output file path.
+
+5. Display the grayscale image using the `show()` method:
+
+grayscale_image.show()
+
+This command will open a window displaying the grayscale image. Note that this method may not work in all Python environments, depending on the operating system and the availability of the underlying GUI libraries.
+
+After executing the code, the original image will be loaded, and it will be converted to grayscale. The resulting grayscale image will be saved as "grayscale_image.jpg". Additionally, the grayscale image will be displayed in a separate window using the `show()` method if supported in your environment.

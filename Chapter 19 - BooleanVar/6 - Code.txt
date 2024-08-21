@@ -1,0 +1,38 @@
+import tkinter as tk
+
+root = tk.Tk()
+root.geometry("200x200")
+
+# Create BooleanVars to hold the values
+math_var = tk.BooleanVar()
+science_var = tk.BooleanVar()
+english_var = tk.BooleanVar()
+
+# Define a function to print the selected courses
+def print_selection():
+    selected = []
+    if math_var.get():
+        selected.append("Math")
+    if science_var.get():
+        selected.append("Science")
+    if english_var.get():
+        selected.append("English")
+    if len(selected) == 0:
+        print("No courses selected")
+    else:
+        print("Selected courses:", ", ".join(selected))
+
+# Create Checkbuttons to select the courses
+math_checkbox = tk.Checkbutton(root, text="Math", variable=math_var)
+science_checkbox = tk.Checkbutton(root, text="Science", variable=science_var)
+english_checkbox = tk.Checkbutton(root, text="English", variable=english_var)
+
+math_checkbox.pack()
+science_checkbox.pack()
+english_checkbox.pack()
+
+# Create a button to print the selected courses
+button = tk.Button(root, text="Print selection", command=print_selection)
+button.pack()
+
+root.mainloop()

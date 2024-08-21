@@ -1,0 +1,7 @@
+In this example, we create a DoubleVar object named value_var. The initial value of value_var is set to 0.0. We then create a label widget that displays the current value of value_var. We also create a Scale widget that allows the user to adjust the value of value_var.
+
+We define an update_label function that updates the text of the label to display the current value of value_var. We associate this function with a button widget using the command option.
+
+When the user adjusts the scale or clicks the button, the update_label function is called and the label is updated with the current value of value_var.
+
+Overall, this example demonstrates how you can use a DoubleVar object to represent a floating-point value in Tkinter, and how you can create a scale widget and a button widget to adjust and display the value.

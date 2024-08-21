@@ -1,0 +1,5 @@
+we create a StringVar named label_text to hold the text of the label. We set its initial value to "Hello, World!". We then create a label widget and associate it with the label_text variable using the textvariable option. This means that whenever the value of label_text changes, the label will automatically update to display the new value.
+
+We also create an Entry widget and a Button widget. When the user types a new value into the Entry widget and clicks the Button, the update_label function is called. This function updates the value of label_text to the value of the Entry widget, which causes the label to update with the new text.
+
+Overall, this example demonstrates how you can use Tkinter variables to control the state of your GUI components and make them interactive.

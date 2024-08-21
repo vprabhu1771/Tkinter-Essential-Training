@@ -1,0 +1,10 @@
+Tkinter is a graphical user interface (GUI) module in Python's standard library. It provides a toolkit of widgets, such as buttons, labels, and text boxes, that can be used to create GUI applications. Tkinter is based on the Tcl/Tk GUI toolkit, which is popular for creating GUIs on many platforms.
+
+Tkinter provides a way to create windows, frames, and other UI elements, and to respond to user input such as button clicks or key presses. It also supports many common layout managers, such as grid and pack, which allow widgets to be arranged in a specific way on the screen.
+
+Tkinter can be used to create standalone desktop applications, as well as to add GUI functionality to existing Python programs. It is a simple and easy-to-use module, which makes it a popular choice for beginners learning to create GUI applications in Python.
+
+Here's an example of a simple Tkinter program that creates a window with a button:
+
+
+When you run this program, it will create a window with a button labeled "Say Hello". When you click the button, it will print "Hello, Tkinter!" to the console.

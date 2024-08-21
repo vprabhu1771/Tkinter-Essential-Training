@@ -1,0 +1,7 @@
+from tkinter import messagebox
+
+# Display an info message
+response = messagebox.showinfo("Info", "This is an info message.")
+
+if response == "ok":
+    print("User clicked Ok")

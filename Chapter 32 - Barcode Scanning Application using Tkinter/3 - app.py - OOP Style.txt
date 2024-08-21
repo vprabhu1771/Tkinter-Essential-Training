@@ -1,0 +1,36 @@
+import tkinter as tk
+
+class BarcodeScannerApp(tk.Tk):
+    def __init__(self):
+        super().__init__()
+
+        self.info = tk.StringVar()
+        self.info.set("Please Scan")
+
+        self.barcode_label = tk.Label(self, textvariable=self.info)
+        self.barcode_label.pack()
+
+        self.barcode_entry = tk.Entry(self)
+        self.barcode_entry.pack()
+        self.barcode_entry.focus_set()
+
+        self.bind('<KeyPress>', self.handle_keypress)
+
+    def handle_barcode(self, barcode):
+        # This method will be called when a barcode is scanned
+        print("Scanned barcode:", barcode)
+        self.info.set(barcode)
+        self.barcode_label.config(textvariable=self.info)
+
+    def handle_keypress(self, event):
+        # This method will be called when a key is pressed in the application
+        if event.keysym == 'Return':
+            # Assuming barcode scanner sends a "Return" key after scanning
+            barcode = self.barcode_entry.get()
+            self.handle_barcode(barcode)
+            self.barcode_entry.delete(0, tk.END)
+            self.barcode_entry.insert(0, barcode)
+
+if __name__ == '__main__':
+    app = BarcodeScannerApp()
+    app.mainloop()

@@ -1,0 +1,38 @@
+The provided code demonstrates how to crop an image using the Python Imaging Library (PIL) module. Here's an explanation of the code:
+
+1. Import the `Image` class from the `PIL` package:
+
+from PIL import Image
+
+
+2. Open an image by providing the path to the image file:
+
+image = Image.open('dog.jpg')
+
+Replace `'dog.jpg'` with the actual path to your image file.
+
+3. Define the cropping region by specifying the coordinates for the left, upper, right, and lower boundaries in a tuple:
+
+box = (100, 100, 800, 400)
+
+Here, `(100, 100)` represents the top-left coordinate of the desired cropping region, and `(800, 400)` represents the bottom-right coordinate. Adjust these values according to your specific requirements.
+
+4. Crop the image using the `crop()` method of the `image` object, passing the `box` tuple as an argument:
+
+cropped_image = image.crop(box)
+
+The `crop()` method returns a new `Image` object containing the specified region of the original image.
+
+5. Save the cropped image to a file by calling the `save()` method on the `cropped_image` object, providing the desired output file path:
+
+cropped_image.save('cropped_image.jpg')
+
+The cropped image will be saved to the specified output file path.
+
+6. Display the cropped image using the `show()` method:
+
+cropped_image.show()
+
+This command will open a window displaying the cropped image. Note that this method may not work in all Python environments, depending on the operating system and the availability of the underlying GUI libraries.
+
+After executing the code, the original image will be loaded, a specific region defined by the `box` coordinates will be cropped from the image, and the resulting cropped image will be saved as "cropped_image.jpg". Additionally, the cropped image will be displayed in a separate window if the `show()` method is supported in your environment.

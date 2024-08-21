@@ -1,0 +1,55 @@
+The Entry widget in Tkinter is used to allow the user to input text or values. It is similar to a text box in other GUI frameworks.
+
+To create an Entry widget, you first need to create a parent widget to contain it, such as a Tk or Frame widget. You can then create the Entry widget and specify its size using the width option.
+
+Here is a full example that demonstrates how to use the Entry widget to create a simple login form:
+
+import tkinter as tk
+
+root = tk.Tk()
+
+# Adjust Size
+root.geometry("300x150")
+root.title("Login Form")
+
+# Create a label for the username field
+username_label = tk.Label(root, text="Username")
+username_label.pack()
+
+# Create an entry widget for the username field
+username_entry = tk.Entry(root, width=30)
+username_entry.pack()
+
+# Create a label for the password field
+password_label = tk.Label(root, text="Password")
+password_label.pack()
+
+# Create an entry widget for the password field
+password_entry = tk.Entry(root, width=30, show="*")
+password_entry.pack()
+
+
+# Function to handle login button click
+def login():
+    username = username_entry.get()
+    password = password_entry.get()
+
+    if username == "admin" and password == "admin":
+        print("Login successful!")
+    else:
+        print("Login failed.")
+
+
+# Create a login button
+login_button = tk.Button(root, text="Login", command=login)
+
+login_button.pack()
+
+root.mainloop()
+
+
+
+In this example, we create a simple login form with two fields: a username field and a password field. We use Label widgets to create labels for each field, and Entry widgets to create the input fields themselves. We also use a Button widget to create a login button that calls a function when clicked.
+
+When the user clicks the login button, the login function is called. This function retrieves the values of the username and password fields using the get method of the Entry widgets. It then checks if the username and password are correct, and prints a message indicating whether the login was successful or not.
+

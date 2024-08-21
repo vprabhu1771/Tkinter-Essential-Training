@@ -1,0 +1,9 @@
+from tkinter import messagebox
+
+# Ask a yes/no question
+response = messagebox.askyesno("Question", "Do you want to proceed?")
+
+if response == 1:
+    print("User clicked Yes")
+else:
+    print("User clicked No")

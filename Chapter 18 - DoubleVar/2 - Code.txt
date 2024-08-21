@@ -1,0 +1,29 @@
+import tkinter as tk
+
+root = tk.Tk()
+
+# Adjust Size
+root.geometry("300x100")
+
+# Create a DoubleVar to hold the value
+value_var = tk.DoubleVar()
+value_var.set(0.0)
+
+# Create a label to display the value
+label = tk.Label(root, text="Value: 0.0")
+label.pack()
+
+# Create a scale to adjust the value
+scale = tk.Scale(root, from_=0.0, to=1.0, resolution=0.1, variable=value_var, orient=tk.HORIZONTAL)
+scale.pack()
+
+# Create a button to update the label
+button = tk.Button(root, text="Update Value")
+
+def update_label():
+    label.config(text="Value: " + str(value_var.get()))
+
+button.config(command=update_label)
+button.pack()
+
+root.mainloop()

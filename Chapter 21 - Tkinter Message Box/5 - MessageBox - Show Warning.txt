@@ -1,0 +1,7 @@
+from tkinter import messagebox
+
+# Display a warning message
+response = messagebox.showwarning("Warning", "This is a warning message.")
+
+if response == "ok":
+    print("User clicked Ok")

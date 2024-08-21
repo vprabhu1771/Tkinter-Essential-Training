@@ -1,0 +1,9 @@
+In this example, we create three BooleanVar objects named math_var, science_var, and english_var. These variables will hold the values of the checkboxes for each course.
+
+We define a print_selection function that checks the values of the BooleanVars and prints the names of the selected courses. If no courses are selected, it prints a message saying so.
+
+We create three Checkbutton widgets, one for each course, and associate each one with a BooleanVar. We pack these checkbuttons into the root window.
+
+We also create a Button widget that is associated with the print_selection function. When the user clicks the button, the selected courses are printed to the console.
+
+The user can select any combination of courses by checking the corresponding checkboxes. When the button is clicked, the selected courses are printed to the console.

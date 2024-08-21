@@ -1,0 +1,7 @@
+In this example, we create a BooleanVar object named value_var. The initial value of value_var is set to False. We then create a Checkbutton widget that is associated with value_var.
+
+We also create a label widget that displays the current value of value_var. We define an update_label function that updates the text of the label to display the current value of value_var. We associate this function with a button widget using the command option.
+
+When the user toggles the checkbutton or clicks the button, the update_label function is called and the label is updated with the current value of value_var.
+
+Overall, this example demonstrates how you can use a BooleanVar object to represent a boolean value in Tkinter, and how you can create a checkbutton widget and a button widget to toggle and display the value.

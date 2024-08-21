@@ -1,0 +1,37 @@
+from tkinter import *
+from tkinter.filedialog import askopenfilenames
+
+def open_files():
+    # Create a Tk object and hide the main window
+    root = Tk()
+    root.withdraw()
+
+    # Display the file dialog box and get the selected file paths
+    file_paths = askopenfilenames()
+
+    # Open the selected files and display their contents
+    for file_path in file_paths:
+        with open(file_path, 'r') as file:
+            content = file.read()
+            print(content)
+
+# Create a button that opens multiple files
+root = Tk()
+
+# Adjust Size
+root.geometry("300x100")
+
+button = Button(root, text="Open Files", command=open_files)
+
+button.pack()
+
+root.mainloop()
+
+
+
+Here's a full example of using filedialog.askopenfilenames to open multiple files in tkinter:
+
+
+In this example, we define a function open_files that opens multiple files using filedialog.askopenfilenames. When the function is called, it creates a Tk object and hides the main window using the withdraw method. It then calls askopenfilenames to display the file dialog box and get the selected file paths. Finally, it opens each selected file and displays its contents.
+
+We create a button in the main window that calls the open_files function when clicked. When the button is clicked, it opens the file dialog box and allows the user to select multiple files to open. Once files are selected, the open_files function is called and the selected files are opened and their contents are displayed.

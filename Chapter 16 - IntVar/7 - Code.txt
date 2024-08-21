@@ -1,0 +1,35 @@
+import tkinter as tk
+
+root = tk.Tk()
+
+# Adjust Size
+root.geometry("300x100")
+
+# Create two IntVars to hold the gender selection
+gender_var = tk.IntVar()
+gender_var.set(1)
+
+# Create two radiobuttons and associate them with the IntVars
+male_radiobutton = tk.Radiobutton(root, text="Male", variable=gender_var, value=1)
+female_radiobutton = tk.Radiobutton(root, text="Female", variable=gender_var, value=2)
+
+male_radiobutton.pack()
+female_radiobutton.pack()
+
+# Create a label to display the selected gender
+label = tk.Label(root, text="Selected Gender: Male")
+label.pack()
+
+# Create a button to update the label
+button = tk.Button(root, text="Update Gender")
+
+def update_label():
+    if gender_var.get() == 1:
+        label.config(text="Selected Gender: Male")
+    elif gender_var.get() == 2:
+        label.config(text="Selected Gender: Female")
+
+button.config(command=update_label)
+button.pack()
+
+root.mainloop()

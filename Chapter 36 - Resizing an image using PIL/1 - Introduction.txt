@@ -1,0 +1,38 @@
+The provided code is an example of how to resize an image using the Python Imaging Library (PIL) module. Here's a step-by-step explanation:
+
+1. Import the `Image` class from the `PIL` module:
+
+from PIL import Image
+
+
+2. Open an image by providing the path to the image file:
+
+image = Image.open('path/to/image.jpg')
+
+Replace 'path/to/image.jpg' with the actual path to your image file.
+
+3. Define the desired width and height for the resized image:
+
+width = 100
+height = 100
+
+Here, `width` and `height` are set to 100 pixels each, but you can adjust these values according to your specific requirements.
+
+4. Resize the image by calling the `resize()` method on the `image` object, passing the desired width and height as a tuple:
+
+resized_image = image.resize((width, height))
+
+The `resize()` method returns a new `Image` object with the specified dimensions.
+
+5. Save the resized image to a file by calling the `save()` method on the `resized_image` object, providing the desired output file path:
+
+resized_image.save('path/to/resized_image.jpg')
+
+Replace `'path/to/resized_image.jpg'` with the actual path and file name where you want to save the resized image.
+
+After executing the code, the original image will be resized to the specified dimensions, and the resized image will be saved to the specified output file path.
+
+Make sure to have the PIL library installed in your Python environment. You can install it using pip:
+
+pip install pillow
+

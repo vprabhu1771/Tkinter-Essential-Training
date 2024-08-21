@@ -1,0 +1,14 @@
+from PIL import Image
+
+# Open an image
+image = Image.open('path/to/image.jpg')
+
+width = 100
+
+height = 100
+
+# Resize the image to a specific size
+resized_image = image.resize((width, height))
+
+# Save the resized image
+resized_image.save('path/to/resized_image.jpg')

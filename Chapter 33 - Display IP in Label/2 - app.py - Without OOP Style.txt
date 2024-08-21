@@ -1,0 +1,21 @@
+import requests
+import tkinter as tk
+
+def get_ip_address():
+    response = requests.get("https://api.ipify.org/?format=json")
+    data = response.json()
+    ip_address = data["ip"]
+    return ip_address
+
+root = tk.Tk()
+
+root.geometry("400x100")
+
+ip_label = tk.Label(root, text="IP Address: ")
+ip_label.pack()
+
+ip_address = get_ip_address()
+ip_value_label = tk.Label(root, text=ip_address)
+ip_value_label.pack()
+
+root.mainloop()

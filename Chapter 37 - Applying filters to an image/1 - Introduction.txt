@@ -1,0 +1,32 @@
+The provided code demonstrates how to apply a blur filter to an image using the Python Imaging Library (PIL) module. Here's a breakdown of the code:
+
+1. Import the `Image` class and the `ImageFilter` module from the `PIL` package:
+
+from PIL import Image, ImageFilter
+
+
+2. Open an image by providing the path to the image file:
+
+image = Image.open('dog.jpg')
+
+Replace `'dog.jpg'` with the actual path to your image file.
+
+3. Apply a blur filter to the image using the `filter()` method, specifying `ImageFilter.BLUR` as the filter type:
+
+blurred_image = image.filter(ImageFilter.BLUR)
+
+The `filter()` method takes an image filter object as an argument and returns a new image with the specified filter applied. In this case, `ImageFilter.BLUR` represents the blur filter.
+
+4. Save the blurred image to a file by calling the `save()` method on the `blurred_image` object, providing the desired output file path:
+
+blurred_image.save('blurred_image.jpg')
+
+The blurred image will be saved to the specified output file path.
+
+5. Display the blurred image using the `show()` method:
+
+blurred_image.show()
+
+This command will open a window displaying the blurred image. Note that this method may not work in all Python environments, depending on the operating system and the availability of the underlying GUI libraries.
+
+After executing the code, the original image will be loaded, the blur filter will be applied to it, and the resulting blurred image will be saved as "blurred_image.jpg". Additionally, the blurred image will be displayed in a separate window if the `show()` method is supported in your environment.

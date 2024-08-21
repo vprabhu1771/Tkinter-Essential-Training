@@ -1,0 +1,32 @@
+The provided code demonstrates how to rotate an image using the Python Imaging Library (PIL) module. Here's an explanation of the code:
+
+1. Import the `Image` class from the `PIL` package:
+
+from PIL import Image
+
+
+2. Open an image by providing the path to the image file:
+
+image = Image.open('dog.jpg')
+
+Replace `'dog.jpg'` with the actual path to your image file.
+
+3. Rotate the image by a specific angle (in degrees) using the `rotate()` method of the `image` object:
+
+rotated_image = image.rotate(90)
+
+In this example, the image is rotated by 90 degrees clockwise. You can change the angle to any desired value.
+
+4. Save the rotated image to a file by calling the `save()` method on the `rotated_image` object, providing the desired output file path:
+
+rotated_image.save('rotated_image.jpg')
+
+The rotated image will be saved to the specified output file path.
+
+5. Display the rotated image using the `show()` method:
+
+rotated_image.show()
+
+This command will open a window displaying the rotated image. Note that this method may not work in all Python environments, depending on the operating system and the availability of the underlying GUI libraries.
+
+After executing the code, the original image will be loaded, and it will be rotated by the specified angle (90 degrees in this case). The resulting rotated image will be saved as "rotated_image.jpg". Additionally, the rotated image will be displayed in a separate window if the `show()` method is supported in your environment.

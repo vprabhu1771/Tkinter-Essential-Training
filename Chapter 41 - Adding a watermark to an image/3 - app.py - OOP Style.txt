@@ -1,0 +1,42 @@
+from PIL import Image, ImageDraw, ImageFont
+
+class ImageEditor:
+    def __init__(self, image_path):
+        self.image = Image.open(image_path)
+        self.draw = ImageDraw.Draw(self.image)
+
+    def add_watermark(self, text, font_path, font_size, color, opacity, x, y):
+        font = ImageFont.truetype(font_path, size=font_size)
+        self.draw.text((x, y), text, font=font, fill=color, opacity=opacity)
+
+    def save_image(self, save_path):
+        self.image.save(save_path)
+
+    def display_image(self):
+        self.image.show()
+
+
+# Create an instance of ImageEditor
+editor = ImageEditor('dog.jpg')
+
+# Define watermark text parameters
+watermark_text = 'Watermark'
+
+font_path = 'C:/Windows/Fonts/arial.ttf'
+
+font_size = 24
+
+# Black
+color = (0, 0, 0)
+
+opacity = 128
+
+x = 10
+y = 10
+
+# Add the watermark text to the image
+editor.add_watermark(watermark_text, font_path, font_size, color, opacity, x, y)
+
+# Save and display the image with the watermark
+editor.save_image('image_with_watermark.jpg')
+editor.display_image()

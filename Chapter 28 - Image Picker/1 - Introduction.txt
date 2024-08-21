@@ -1,0 +1,26 @@
+pip install opencv-python
+
+pip install pillow
+
+    Importing the necessary modules:
+        The tkinter module is used for creating GUI applications in Python.
+        askopenfilename is a function from the tkinter.filedialog module that opens a file dialog for selecting a file.
+        cv2 is the OpenCV module for image processing and computer vision tasks.
+
+    Defining the choose_file function:
+        This function is executed when the "Pick File" button is clicked.
+        It opens a file dialog for the user to select a file.
+        If a file is selected, it loads the image using cv2.imread.
+        It checks if the image was loaded successfully and displays it in a window using cv2.imshow.
+        It waits for a key press and then closes the window using cv2.waitKey and cv2.destroyAllWindows.
+
+    Creating the main application window and the "Pick File" button:
+        The Tk() function creates the main application window.
+        root.geometry("300x100") sets the size of the window.
+        The Button widget creates a button labeled "Pick File" that executes the choose_file function when clicked.
+        pick_btn.pack() adds the button to the window.
+
+    Starting the main event loop:
+        root.mainloop() starts the main event loop of the tkinter application, where it listens for user interactions and updates the GUI accordingly.
+
+When you run the code, it creates a window with a "Pick File" button. Clicking the button opens a file dialog for selecting an image file. If an image is selected and successfully loaded, it will be displayed in a new window using OpenCV. The image window can be closed by pressing any key.

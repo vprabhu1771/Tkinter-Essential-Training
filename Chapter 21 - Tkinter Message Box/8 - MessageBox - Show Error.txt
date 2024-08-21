@@ -1,0 +1,7 @@
+from tkinter import messagebox
+
+# Display an error message
+response = messagebox.showerror("Error", "This is an error message.")
+
+if response == "ok":
+    print("User clicked Ok")

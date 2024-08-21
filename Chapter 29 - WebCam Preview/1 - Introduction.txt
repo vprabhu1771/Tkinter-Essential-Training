@@ -1,0 +1,10 @@
+pip install pillow
+
+pip install opencv-python
+
+
+In this code, we create a WebcamPreview class that initializes a Tkinter window and a VideoCapture object from OpenCV. We create a Canvas in the Tkinter window with the same dimensions as the video stream, and then we use the update method to continuously read frames from the video stream and display them in the Tkinter window.
+
+The update method reads the next frame from the video stream using the read method of the VideoCapture object. If the frame is successfully read, it converts it to a PhotoImage using the ImageTk module and displays it in the Tkinter window using the create_image method of the Canvas object. Finally, the update method schedules itself to be called again after a delay of 15 milliseconds using the after method of the Tkinter window.
+
+To use this code, you can create an instance of the WebcamPreview class with no arguments to use the default webcam (index 0), or you can pass the index of a specific webcam if you have multiple webcams connected to your computer.

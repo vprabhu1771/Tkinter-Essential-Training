@@ -1,0 +1,7 @@
+In the above code, a ImageProcessor class is defined with two methods: open_image() and display_image(). The __init__() method is the constructor that initializes the image_path attribute and sets the image attribute to None.
+
+The open_image() method opens the image specified by the image_path and assigns it to the image attribute.
+
+The display_image() method checks if an image has been opened (self.image) and shows it using the show() method. If no image has been opened, it prints a message indicating that no image is opened.
+
+To use the class, an instance of ImageProcessor is created with the path to the image file. Then, the open_image() method is called to open the image, and finally, the display_image() method is called to show the image.

@@ -1,0 +1,40 @@
+import tkinter as tk
+
+
+def on_text_changed(*args):
+    # Get the current value from the StringVar
+    text = var.get()
+
+    # Convert the text to uppercase
+    text = text.upper()
+
+    # Update the StringVar with the modified text
+    var.set(text)
+
+    # Update the label with the modified text
+    label.config(text=text)
+
+
+# Create the Tkinter root
+root = tk.Tk()
+
+root.geometry("300x100")
+
+root.title("Lowercase to Uppercase")
+
+# Create a StringVar to track the input value
+var = tk.StringVar()
+
+# Set up a trace on the StringVar to detect changes
+var.trace('w', on_text_changed)
+
+# Create the input field using the StringVar
+entry = tk.Entry(root, textvariable=var)
+entry.pack()
+
+# Create a label to display the converted text
+label = tk.Label(root, text="")
+label.pack()
+
+# Run the Tkinter event loop
+root.mainloop()

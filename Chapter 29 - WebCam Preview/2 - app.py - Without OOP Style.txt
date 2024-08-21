@@ -1,0 +1,29 @@
+import tkinter as tk
+import cv2
+from PIL import Image, ImageTk
+
+def update():
+    ret, frame = vid.read()
+    if ret:
+        photo = ImageTk.PhotoImage(image=Image.fromarray(frame))
+        canvas.create_image(0, 0, image=photo, anchor=tk.NW)
+    window.after(delay, update)
+
+window = tk.Tk()
+window.title("Webcam Preview")
+
+video_source = 0
+vid = cv2.VideoCapture(video_source)
+
+canvas = tk.Canvas(
+    window,
+    width=vid.get(cv2.CAP_PROP_FRAME_WIDTH),
+    height=vid.get(cv2.CAP_PROP_FRAME_HEIGHT)
+)
+canvas.pack()
+
+# milliseconds
+delay = 15
+update()
+
+window.mainloop()
