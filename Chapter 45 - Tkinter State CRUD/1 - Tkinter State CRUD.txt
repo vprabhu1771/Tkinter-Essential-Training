@@ -2,27 +2,27 @@ import tkinter as tk
 from tkinter import messagebox
 import sqlite3
 
-# Create a database connection
+# create a database connection
 conn = sqlite3.connect('ifsc_code_finder.db')
 cursor = conn.cursor()
 
-# Create state table
+# create state table
 cursor.execute('''
     CREATE TABLE IF NOT EXISTS state (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         name VARCHAR(255),
-        state_id INTEGER,
-        FOREIGN KEY (state_id) REFERENCES state(id)
-    )
+        country_id INTEGER,
+        FOREIGN KEY (country_id) REFERENCES country(id)
+        )
 ''')
 conn.commit()
 
 def insert_state(name, country_id):
-    cursor.execute("INSERT INTO state (name, country_id) VALUES (?, ?)", (name, country_id))
+    cursor.execute("INSERT INTO state (name, country_id) VALUES (?,?)", (name, country_id))
     conn.commit()
 
-def update_state(id, name,country_id):
-    cursor.execute("UPDATE state SET name = ?, country_id = ? WHERE id = ?", (name, country_id, id))
+def update_state(id, name, country_id):
+    cursor.execute("UPDATE state SET name = ? country_id = ? WHERE id = ?", (name, country_id, id))
     conn.commit()
 
 def delete_state(id):
@@ -54,8 +54,7 @@ def create_state():
         name_entry.delete(0, tk.END)
     else:
         messagebox.showerror("Error", "Please enter a State name")
-
-
+    
 def update_selected_state():
     selected_item = states_listbox.curselection()
     if selected_item:
@@ -65,14 +64,13 @@ def update_selected_state():
         if new_name:
             state_id = selected_state.split(":")[0]
             update_state(state_id, new_name, country_id)
-            messagebox.showinfo("Success", "state updated successfully")
+            messagebox.showinfo("Success", "State updated successfully")
             load_states()
             name_entry.delete(0, tk.END)
         else:
             messagebox.showerror("Error", "Please enter a state name")
     else:
         messagebox.showerror("Error", "No state selected")
-
 
 def delete_selected_state():
     selected_item = states_listbox.curselection()
@@ -86,42 +84,38 @@ def delete_selected_state():
     else:
         messagebox.showerror("Error", "No state selected")
 
-
 def load_states():
     states = get_all_states()
     states_listbox.delete(0, tk.END)
     for state in states:
         states_listbox.insert(tk.END, f"{state[0]}: {state[1]}: {state[2]}")
 
-
-# Create the main window
+# create the main window
 root = tk.Tk()
 root.title("State Management")
 root.geometry("400x400")
 
-# State Listbox
+# State listbox
 states_listbox = tk.Listbox(root)
 states_listbox.pack()
 
-# State Name Entry
+# state name entry
 name_entry = tk.Entry(root)
 name_entry.pack()
 
-# Dropdown menu for countries
+# dropdown menus for countries
 country_var = tk.StringVar()
-
 countries = get_all_countries()
 
-# Assuming country name is in the second column
+# assuming country name is in the second column
 country_options = [country[1] for country in countries]
 
-# Set default option
+# set default option
 country_var.set(country_options[0])
-
-country_menu = tk.OptionMenu(root, country_var, *country_options)
+country_menu = tk.OptionMenu(root, country_var, country_options)
 country_menu.pack()
 
-# Buttons
+# buttons
 create_button = tk.Button(root, text="Create", command=create_state)
 create_button.pack()
 
@@ -131,11 +125,11 @@ update_button.pack()
 delete_button = tk.Button(root, text="Delete", command=delete_selected_state)
 delete_button.pack()
 
-# Load states on startup
+# load states on startup
 load_states()
 
-# Start the main loop
+# start the mainloop
 root.mainloop()
 
-# Close the database connection
+# close the database connection
 conn.close()
