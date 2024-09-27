@@ -2,33 +2,43 @@ import tkinter as tk
 from tkinter import messagebox
 import sqlite3
 
+# create a database connection
 conn = sqlite3.connect('ifsc_code_finder.db')
 cursor = conn.cursor()
 
+# create the state table if not exists
+cursor.execute('''
+    CREATE TABLE IF NOT EXISTS state (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        name VARCHAR(255)
+    )
+''')
+
+# create the city table if not exists
 cursor.execute('''
     CREATE TABLE IF NOT EXISTS city (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         name VARCHAR(255),
-        city_id INTEGER,
-        FOREIGN KEY (city_id) REFERENCES city(id)
-        )
+        state_id INTEGER,
+        FOREIGN KEY (state_id) REFERENCES state(id)
+    )
 ''')
 conn.commit()
 
-def insert_city(name, city_id):
-    cursor.execute("INSERT INTO city (name, city_id) VALUES (?, ?)", (name, city_id))
+def insert_city(name, state_id):
+    cursor.execute("INSERT INTO city (name, state_id) VALUES (?, ?)", (name, state_id))
     conn.commit()
 
-def update_city(id, name, city_id):
-    cursor.execute("UPDATE city SET name = ?, city_id = ? WHERE id = ?", (name, city_id, id))
+def update_city(city_id, name, state_id):
+    cursor.execute("UPDATE city SET name = ?, state_id = ? WHERE id = ?", (name, state_id, city_id))
     conn.commit()
 
-def delete_city(id):
-    cursor.execute("DELETE FROM city WHERE id = ?", (id,))
+def delete_city(city_id):
+    cursor.execute("DELETE FROM city WHERE id = ?", (city_id,))
     conn.commit()
 
 def get_all_cities():
-    cursor.execute("SELECT * FROM city")
+    cursor.execute("SELECT city.id, city.name, state.name FROM city JOIN state ON city.state_id = state.id")
     rows = cursor.fetchall()
     return rows
 
@@ -37,36 +47,42 @@ def get_all_states():
     rows = cursor.fetchall()
     return rows
 
-def get_city_by_id(id):
-    cursor.execute("SELECT * FROM city WHERE id = ?", (id,))
+def get_city_by_id(city_id):
+    cursor.execute("SELECT * FROM city WHERE id = ?", (city_id,))
     row = cursor.fetchone()
     return row
 
 def create_city():
     name = name_entry.get().strip()
-    state_id = state_var.get()
-    if name:
+    state_name = state_var.get()
+    
+    # Get state_id from state_name
+    state_id = get_state_id_by_name(state_name)
+    
+    if name and state_id:
         insert_city(name, state_id)
-        messagebox.showinfo("Success", "city created successfully")
+        messagebox.showinfo("Success", "City created successfully")
         load_cities()
         name_entry.delete(0, tk.END)
     else:
-        messagebox.showerror("Error", "Please enter a city name")
+        messagebox.showerror("Error", "Please enter a City name and select a valid state")
 
 def update_selected_city():
     selected_item = cities_listbox.curselection()
     if selected_item:
         selected_city = cities_listbox.get(selected_item)
         new_name = name_entry.get().strip()
-        state_id = state_var.get()
-        if new_name:
-            city_id = selected_city.split(":")[0]
-            update_city(city_id,new_name,state_id)
-            messagebox.showinfo("Success", "state updated successfully")
+        state_name = state_var.get()
+        state_id = get_state_id_by_name(state_name)
+        
+        if new_name and state_id:
+            city_id = int(selected_city.split(":")[0])
+            update_city(city_id, new_name, state_id)
+            messagebox.showinfo("Success", "City updated successfully")
             load_cities()
             name_entry.delete(0, tk.END)
         else:
-            messagebox.showerror("Error", "Please enter a city name")
+            messagebox.showerror("Error", "Please enter a city name and select a valid state")
     else:
         messagebox.showerror("Error", "No city selected")
 
@@ -74,9 +90,9 @@ def delete_selected_city():
     selected_item = cities_listbox.curselection()
     if selected_item:
         selected_city = cities_listbox.get(selected_item)
-        state_id = selected_city.split(":")[0]
-        delete_city(state_id)
-        messagebox.showinfo("Success", "city deleted successfully")
+        city_id = int(selected_city.split(":")[0])
+        delete_city(city_id)
+        messagebox.showinfo("Success", "City deleted successfully")
         load_cities()
         name_entry.delete(0, tk.END)
     else:
@@ -88,28 +104,41 @@ def load_cities():
     for city in cities:
         cities_listbox.insert(tk.END, f"{city[0]}: {city[1]}: {city[2]}")
 
+def get_state_id_by_name(state_name):
+    cursor.execute("SELECT id FROM state WHERE name = ?", (state_name,))
+    result = cursor.fetchone()
+    return result[0] if result else None
+
+# create the main window
 root = tk.Tk()
 root.title("City Management")
 root.geometry("400x400")
 
-
+# City listbox
 cities_listbox = tk.Listbox(root)
 cities_listbox.pack()
 
+# state name entry
 name_entry = tk.Entry(root)
 name_entry.pack()
 
+# Dropdown menu for states
 state_var = tk.StringVar()
-
 states = get_all_states()
 
+# State options
 state_options = [state[1] for state in states]
 
-state_var.set(state_options[0])
+# Ensure the dropdown is created properly
+if state_options:
+    state_var.set(state_options[0])  # Set default option to the first state
+    state_menu = tk.OptionMenu(root, state_var, *state_options)
+else:
+    state_menu = tk.OptionMenu(root, state_var, "")  # Empty dropdown if no options available
 
-state_menu = tk.OptionMenu(root, state_var, *state_options)
 state_menu.pack()
 
+# buttons
 create_button = tk.Button(root, text="Create", command=create_city)
 create_button.pack()
 
@@ -119,9 +148,11 @@ update_button.pack()
 delete_button = tk.Button(root, text="Delete", command=delete_selected_city)
 delete_button.pack()
 
+# Load cities on startup
 load_cities()
 
+# Start the mainloop
 root.mainloop()
 
-# Close the database connection
+# Close the database connection after the main loop
 conn.close()
