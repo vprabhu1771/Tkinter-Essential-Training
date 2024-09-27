@@ -6,14 +6,20 @@ import sqlite3
 conn = sqlite3.connect('ifsc_code_finder.db')
 cursor = conn.cursor()
 
-# create state table
+# Drop the existing state table and recreate it to ensure the correct schema
+# cursor.execute('''
+#     DROP TABLE IF EXISTS state
+# ''')
+# conn.commit()
+
+# create the state table again with the correct schema
 cursor.execute('''
     CREATE TABLE IF NOT EXISTS state (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         name VARCHAR(255),
         country_id INTEGER,
         FOREIGN KEY (country_id) REFERENCES country(id)
-        )
+    )
 ''')
 conn.commit()
 
@@ -22,7 +28,7 @@ def insert_state(name, country_id):
     conn.commit()
 
 def update_state(id, name, country_id):
-    cursor.execute("UPDATE state SET name = ? country_id = ? WHERE id = ?", (name, country_id, id))
+    cursor.execute("UPDATE state SET name = ?, country_id = ? WHERE id = ?", (name, country_id, id))
     conn.commit()
 
 def delete_state(id):
@@ -30,7 +36,11 @@ def delete_state(id):
     conn.commit()
 
 def get_all_states():
-    cursor.execute("SELECT * FROM state")
+    cursor.execute('''
+        SELECT state.id, state.name, country.name 
+        FROM state 
+        JOIN country ON state.country_id = country.id
+    ''')
     rows = cursor.fetchall()
     return rows
 
@@ -46,7 +56,7 @@ def get_state_by_id(id):
 
 def create_state():
     name = name_entry.get().strip()
-    country_id = country_var.get()
+    country_id = int(country_var.get().split(":")[0])  # Get country_id from the option menu
     if name:
         insert_state(name, country_id)
         messagebox.showinfo("Success", "State created successfully")
@@ -60,7 +70,7 @@ def update_selected_state():
     if selected_item:
         selected_state = states_listbox.get(selected_item)
         new_name = name_entry.get().strip()
-        country_id = country_var.get()
+        country_id = int(country_var.get().split(":")[0])  # Get country_id from the option menu
         if new_name:
             state_id = selected_state.split(":")[0]
             update_state(state_id, new_name, country_id)
@@ -108,11 +118,12 @@ country_var = tk.StringVar()
 countries = get_all_countries()
 
 # assuming country name is in the second column
-country_options = [country[1] for country in countries]
+country_options = [f"{country[0]}: {country[1]}" for country in countries]  # Including country_id
 
 # set default option
-country_var.set(country_options[0])
-country_menu = tk.OptionMenu(root, country_var, country_options)
+if country_options:
+    country_var.set(country_options[0])
+country_menu = tk.OptionMenu(root, country_var, *country_options)  # Unpacking the list
 country_menu.pack()
 
 # buttons
