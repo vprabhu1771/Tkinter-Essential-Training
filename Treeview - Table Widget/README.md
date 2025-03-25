@@ -1,3 +1,11 @@
+Tkinter does not have a built-in `Table` widget, but you can use the `ttk.Treeview` widget to create a table-like structure. If you need more advanced table functionality, you can use libraries like **pandas with Tkinter**, `tkintertable`, or `ttk.Treeview`.
+
+---
+
+### **Creating a Simple Table Using `ttk.Treeview`**
+Here’s an example of how to create a table using `ttk.Treeview`:
+
+```python
 import tkinter as tk
 from tkinter import ttk
 
@@ -42,3 +50,16 @@ scrollbar.pack(fill=tk.Y, side=tk.RIGHT)
 
 # Run the Tkinter event loop
 root.mainloop()
+```
+
+---
+
+### **Key Features in the Code:**
+✅ Uses `ttk.Treeview` to display tabular data.  
+✅ Adds column headings and sets their widths.  
+✅ Inserts sample data dynamically.  
+✅ Includes a scrollbar for better navigation.
+
+Would you like to add extra features such as **editable cells, row selection, or data export**? 🚀
+
+![Image](1.PNG)
