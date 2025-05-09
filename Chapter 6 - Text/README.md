@@ -1,6 +1,6 @@
 Here is a full example that demonstrates how to use the Text widget to create a simple text editor:
 
-
+```
 import tkinter as tk
 
 import tkinter.filedialog
@@ -31,7 +31,7 @@ save_button.pack()
 
 
 root.mainloop()
-
+```
 
 
 In this example, we create a simple text editor with a Text widget for the main text area. We use the wrap option to specify how the text should be wrapped within the widget. We also use the expand and fill options of the pack method to make the text widget fill the available space in the window.
