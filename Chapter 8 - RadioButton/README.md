@@ -1,5 +1,5 @@
 here is a full example of how to create and use Radiobutton widgets in Tkinter:
-
+```
 import tkinter as tk
 
 root = tk.Tk()
@@ -33,7 +33,7 @@ btn = tk.Button(root, text="Show selected", command=show_selected)
 btn.pack()
 
 root.mainloop()
-
+```
 
 In this example, we create a StringVar to store the selected value, then create three Radiobutton widgets with different text and values. We set the default selection to "Mac Os", and add the radio buttons and a button to the window using pack().
 
