@@ -1,5 +1,5 @@
 here's a full example of how to create and use a Listbox widget in Tkinter:
-
+```
 import tkinter as tk
 
 root = tk.Tk()
@@ -36,7 +36,7 @@ btn.pack()
 listbox.pack()
 
 root.mainloop()
-
+```
 
 In this example, we create a Listbox widget and add five items to it using a for loop and the insert() method. We also create a Scrollbar widget and configure it to work with the Listbox using the yscrollcommand and config() methods.
 
