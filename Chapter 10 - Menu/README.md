@@ -1,5 +1,5 @@
 here's a full example of how to create and use a menu bar in Tkinter:
-
+```
 import tkinter as tk
 
 root = tk.Tk()
@@ -36,7 +36,7 @@ menu_bar.add_cascade(label="Edit", menu=edit_menu)
 root.config(menu=menu_bar)
 
 root.mainloop()
-
+```
 
 In this example, we create a menu bar using the Menu() method, and then create two menus - File and Edit - using the Menu() method again. We add items to each menu using the add_command() method, and add a separator between items in the File menu using add_separator().
 
